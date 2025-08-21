@@ -47,11 +47,218 @@ To get started with this project, follow the steps below:
 - **Yarn** or **npm**
 - **Supabase Account** for database setup.
 
+## API Documentation
+
+This section covers the available API endpoints for the Task Management Application. Each endpoint allows you to manage boards, lists, and tasks, including their CRUD operations.
+
+### 1. Fetch Board, Lists, and Tasks
+
+**Endpoint**: `GET /api/boards`
+
+**Description**: Fetches the details of a board along with its lists and tasks.
+
+#### Request:
+
+- **Method**: `GET`
+- **URL**: `/api/boards`
+
+#### Response:
+
+```json
+{
+  "board": {
+    "id": "board-id",
+    "title": "Board Title",
+    "created_at": "2023-05-01T00:00:00.000Z"
+  },
+  "lists": [
+    {
+      "id": "list-id-1",
+      "title": "List 1",
+      "board_id": "board-id",
+      "created_at": "2023-05-01T00:00:00.000Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "task-id-1",
+      "title": "Task 1",
+      "description": "Task 1 description",
+      "list_id": "list-id-1",
+      "created_at": "2023-05-01T00:00:00.000Z"
+    }
+  ]
+}
+```
+### 2. Create a New List
+
+**Endpoint**: `POST /api/lists`
+
+**Description**: Creates a new list in a board.
+
+#### Request:
+
+- **Method**: `POST`
+- **URL**: `/api/lists`
+
+#### Body:
+
+```json
+{
+  "boardId": "board-id",
+  "title": "New List"
+}
+```
+### Response:
+```json
+{
+  "message": "List created successfully",
+  "data": {
+    "id": "new-list-id",
+    "title": "New List",
+    "board_id": "board-id",
+    "created_at": "2023-05-01T00:00:00.000Z"
+  }
+}
+```
+### 3. Delete a List and its Tasks
+
+**Endpoint**: `DELETE /api/lists/[listId]`
+
+**Description**: Deletes a list along with all tasks associated with it.
+
+#### Request:
+
+- **Method**: `DELETE`
+- **URL**: `/api/lists/[listId]`
+
+#### Response:
+
+```json
+{
+  "message": "List and its tasks deleted successfully"
+}
+```
+### 4. Create a New Task
+
+**Endpoint**: `POST /api/tasks`
+
+**Description**: Creates a new task within a specified list.
+
+#### Request:
+
+- **Method**: `POST`
+- **URL**: `/api/tasks`
+
+#### Body:
+
+```json
+{
+  "listId": "list-id",
+  "title": "New Task",
+  "description": "Task description"
+}
+```
+listId: The ID of the list to which the task belongs (string).
+
+title: The title of the new task (string).
+
+description: The description of the new task (string).
+
+### Response:
+```json
+{
+  "message": "Task created successfully",
+  "data": {
+    "id": "new-task-id",
+    "title": "New Task",
+    "description": "Task description",
+    "list_id": "list-id",
+    "created_at": "2023-05-01T00:00:00.000Z"
+  }
+}
+```
+id: The unique identifier for the newly created task (string).
+
+title: The title of the task.
+
+description: The description of the task.
+
+list_id: The ID of the list to which this task belongs.
+
+created_at: The timestamp when the task was created.
+
+### 5. Update a Task
+
+**Endpoint**: `PATCH /api/tasks/[taskId]`
+
+**Description**: Updates the title and/or description of an existing task.
+
+#### Request:
+
+- **Method**: `PATCH`
+- **URL**: `/api/tasks/[taskId]`
+
+#### Body:
+
+```json
+{
+  "title": "Updated Task Title",
+  "description": "Updated Task Description"
+}
+```
+title: The updated title of the task (string). This is optional.
+
+description: The updated description of the task (string). This is optional.
+
+### Response:
+```json
+{
+  "message": "Task updated successfully",
+  "task": {
+    "id": "task-id",
+    "title": "Updated Task Title",
+    "description": "Updated Task Description",
+    "list_id": "list-id",
+    "created_at": "2023-05-01T00:00:00.000Z"
+  }
+}
+```
+id: The ID of the task that was updated.
+
+title: The updated title of the task.
+
+description: The updated description of the task.
+
+list_id: The ID of the list the task belongs to.
+
+created_at: The timestamp of when the task was originally created
+
+### 6. Delete a Task
+
+**Endpoint**: `DELETE /api/tasks/[taskId]`
+
+**Description**: Deletes a specific task.
+
+#### Request:
+
+- **Method**: `DELETE`
+- **URL**: `/api/tasks/[taskId]`
+
+#### Response:
+
+```json
+{
+  "message": "Task deleted successfully"
+}
+```
+
 ### Clone the repository
 
 ```bash
 git clone https://github.com/your-username/task-management-app.git
 cd task-management-app 
+```
 
 ## Deploy on Vercel
 
