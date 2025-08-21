@@ -20,14 +20,40 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+# Task Management App
 
-To learn more about Next.js, take a look at the following resources:
+This is a Task Management application that allows users to manage tasks in a board with lists. It supports CRUD operations (Create, Read, Update, Delete) for tasks and lists. The backend is powered by **Supabase** and the frontend is built with **Next.js**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Board Management**: Users can create and manage boards.
+- **List Management**: Users can add, update, and delete lists.
+- **Task Management**: Users can add, edit, update, and delete tasks within a list.
+- **UI**: User-friendly interface with options to edit and delete tasks and lists, with toast notifications.
+
+## Tech Stack
+
+- **Frontend**: React (Next.js), Tailwind CSS
+- **Backend**: Supabase (PostgreSQL), Next.js API Routes
+- **UI Components**: Tailwind CSS, React Icons
+
+## Installation
+
+To get started with this project, follow the steps below:
+
+### Prerequisites
+
+- **Node.js** (version 14.x or above)
+- **Yarn** or **npm**
+- **Supabase Account** for database setup.
+
+### Clone the repository
+
+```bash
+git clone https://github.com/your-username/task-management-app.git
+cd task-management-app
+
+
 
 ## Deploy on Vercel
 
