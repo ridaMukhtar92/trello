@@ -51,9 +51,7 @@ To get started with this project, follow the steps below:
 
 ```bash
 git clone https://github.com/your-username/task-management-app.git
-cd task-management-app
-
-
+cd task-management-app 
 
 ## Deploy on Vercel
 
